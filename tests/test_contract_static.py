@@ -5,6 +5,8 @@ SOURCE = (Path(__file__).resolve().parents[1] / "contracts" / "RunbookDriftGate.
 
 def test_fetch_digest_and_consensus_are_on_critical_path():
     assert 'gl.nondet.web.request(url, method="GET")' in SOURCE
+    assert "response.status != 200" in SOURCE
+    assert "response.status_code" not in SOURCE
     assert "hashlib.sha256(baseline_bytes).hexdigest()" in SOURCE
     assert "hashlib.sha256(candidate_bytes).hexdigest()" in SOURCE
     assert "gl.vm.run_nondet_unsafe" in SOURCE

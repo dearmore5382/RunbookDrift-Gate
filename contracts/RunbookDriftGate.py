@@ -84,7 +84,7 @@ def _derive(observation: dict) -> str:
 
 def _fetch(url: str) -> typing.Any:
     response = gl.nondet.web.request(url, method="GET")
-    if response.status_code != 200 or len(response.body) == 0 or len(response.body) > MAX_DOC_BYTES:
+    if response.status != 200 or response.body is None or len(response.body) == 0 or len(response.body) > MAX_DOC_BYTES:
         raise gl.vm.UserError("SOURCE_UNAVAILABLE")
     return response.body
 

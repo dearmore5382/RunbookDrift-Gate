@@ -182,3 +182,14 @@ def test_digest_mismatch_blocks_semantic_prompt():
         result = globals_["_observe"]("base", "0" * 64, "candidate", "0" * 64, POLICY)
     assert result["source_status"] == "INTEGRITY_FAILURE"
     prompt.assert_not_called()
+
+
+def test_fetch_returns_exact_response_bytes_and_checks_runtime_status_field():
+    vm, contract, _, _ = deploy()
+    globals_ = contract._instance.open_lineage.__globals__
+    url = "https://raw.githubusercontent.com/example-org/operations/" + COMMIT_A + "/runbooks/payments.md"
+    class Response:
+        status = 200
+        body = b"exact raw bytes\n"
+    with vm.activate(), patch.object(globals_["gl"].nondet.web, "request", return_value=Response()):
+        assert globals_["_fetch"](url) == b"exact raw bytes\n"

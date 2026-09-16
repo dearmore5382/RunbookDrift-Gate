@@ -25,4 +25,8 @@ python -m pip install -r requirements-dev.txt
 python -m pytest tests -q
 ```
 
-Current status: contract implementation and 10 direct/static tests pass, including exact fetched-byte hashing and proof that digest mismatch blocks the semantic prompt. Public fixture URLs and SHA-256 commitments computed from their Raw GitHub bytes are recorded in [verification/RAW_FIXTURES.json](verification/RAW_FIXTURES.json). The project is not deployed and no StudioNet validator result is claimed yet. See [SPEC.md](SPEC.md), [fixtures/README.md](fixtures/README.md) and [verification/AUDIT.md](verification/AUDIT.md).
+Current status: contract implementation and 11 direct/static tests pass, including exact fetched-byte hashing, proof that digest mismatch blocks the semantic prompt, and a regression test for the GenLayer web response field `status`. Public fixture URLs and SHA-256 commitments computed from their Raw GitHub bytes are recorded in [verification/RAW_FIXTURES.json](verification/RAW_FIXTURES.json).
+
+An initial StudioNet deployment at `0x0A1c0bE98F74fe09FDe3B8a3Afd07Ee2cAdD412C` matched the earlier repository source but exposed an API integration defect: the contract read `response.status_code` while the pinned GenLayer runtime exposes `response.status`. Its assessment safely returned `ASSESSMENT_RETRYABLE` without state mutation. That deployment is superseded and must not be submitted as the production address. The corrected source requires a new deployment before live verification resumes.
+
+See [SPEC.md](SPEC.md), [fixtures/README.md](fixtures/README.md) and [verification/AUDIT.md](verification/AUDIT.md).
