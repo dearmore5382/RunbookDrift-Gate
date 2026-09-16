@@ -14,9 +14,9 @@ from genlayer_py.abi.transactions import serialize
 from genlayer_py.chains import studionet
 
 ROOT = Path(__file__).resolve().parents[1]
-ADDRESS = "0x0A1c0bE98F74fe09FDe3B8a3Afd07Ee2cAdD412C"
+ADDRESS = "0x08AAF4102cA7E1b70F214A605E05A3aA38aFC437"
 RPC = "https://studio.genlayer.com/api"
-SOURCE_HASH = "cf30a4d86c4dec3f434958b4c132b40eab51ad49ea4b2d563c3cbf55ea587fe0"
+SOURCE_HASH = "249088bfe702d43ef1dfa776568debfb2580f336a80d874c9377139111defab4"
 OWNER, REPO = "dearmore5382", "RunbookDrift-Gate"
 COMMIT = "53c6627541a052413f0bf7c1241603b97fec4ba9"
 BASE = "1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b"

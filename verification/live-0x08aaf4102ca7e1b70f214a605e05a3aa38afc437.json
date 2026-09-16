@@ -1,0 +1,143 @@
+{
+  "contract": "0x08AAF4102cA7E1b70F214A605E05A3aA38aFC437",
+  "source_sha256": "249088bfe702d43ef1dfa776568debfb2580f336a80d874c9377139111defab4",
+  "fixture_commit": "53c6627541a052413f0bf7c1241603b97fec4ba9",
+  "started_at": "2026-09-16T03:01:17.790734+00:00",
+  "wallets": [
+    "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+    "0xA63DE24e30C88FB1019E8956654730316e36eDBE"
+  ],
+  "steps": [
+    {
+      "id": "F1-invalid-commit",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "open_lineage",
+      "args": [
+        "Invalid",
+        "dearmore5382",
+        "RunbookDrift-Gate",
+        "main",
+        "fixtures/baseline-runbook.md",
+        "1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b",
+        "Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets."
+      ],
+      "allowed": [
+        "INVALID_BASELINE_LOCATOR"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x757ce97a20b1e383d7aa558b48c781069b32dc7bad88c6814ea028055c51dda9",
+      "actual": "INVALID_BASELINE_LOCATOR",
+      "readback": {
+        "counts": "0|0"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x757ce97a20b1e383d7aa558b48c781069b32dc7bad88c6814ea028055c51dda9"
+    },
+    {
+      "id": "H1-open-safe-lineage",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "open_lineage",
+      "args": [
+        "Safe wording revision",
+        "dearmore5382",
+        "RunbookDrift-Gate",
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/baseline-runbook.md",
+        "1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b",
+        "Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets."
+      ],
+      "allowed": [
+        "0"
+      ],
+      "status": "VERIFIED",
+      "hash": "0xbb23222507810c9ed6a95d68ac3d8178b76d799215a614eee17fdb6621dc693e",
+      "actual": "0",
+      "readback": {
+        "counts": "1|0",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0xbb23222507810c9ed6a95d68ac3d8178b76d799215a614eee17fdb6621dc693e"
+    },
+    {
+      "id": "F2-outsider-propose",
+      "actor": "0xA63DE24e30C88FB1019E8956654730316e36eDBE",
+      "method": "propose_revision",
+      "args": [
+        0,
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/safe-revision.md",
+        "790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106"
+      ],
+      "allowed": [
+        "CURATOR_ONLY"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x9c0208f1b6246090347f8952d3d7a5c542ff5eda02ccb70726a896fd7a84978b",
+      "actual": "CURATOR_ONLY",
+      "readback": {
+        "counts": "1|0",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x9c0208f1b6246090347f8952d3d7a5c542ff5eda02ccb70726a896fd7a84978b"
+    },
+    {
+      "id": "H2-propose-safe",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "propose_revision",
+      "args": [
+        0,
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/safe-revision.md",
+        "790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106"
+      ],
+      "allowed": [
+        "0"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x86980885541f21dc0178e3a4600bf4427d9617f5628fdca4a0cdec6f76151c05",
+      "actual": "0",
+      "readback": {
+        "counts": "1|1",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 1, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PENDING\", \"verdict\": \"UNEVALUATED\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x86980885541f21dc0178e3a4600bf4427d9617f5628fdca4a0cdec6f76151c05"
+    },
+    {
+      "id": "F3-second-pending",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "propose_revision",
+      "args": [
+        0,
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/missing-rollback.md",
+        "6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072"
+      ],
+      "allowed": [
+        "REVISION_NOT_PROPOSABLE"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x4488a65390372565948885e601c6aeddc0112daae52fedd96d9482917e021565",
+      "actual": "REVISION_NOT_PROPOSABLE",
+      "readback": {
+        "counts": "1|1",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 1, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PENDING\", \"verdict\": \"UNEVALUATED\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x4488a65390372565948885e601c6aeddc0112daae52fedd96d9482917e021565"
+    },
+    {
+      "id": "H3-assess-safe",
+      "actor": "0xA63DE24e30C88FB1019E8956654730316e36eDBE",
+      "method": "assess_revision",
+      "args": [
+        0
+      ],
+      "allowed": [
+        "SAFE_REVISION"
+      ],
+      "status": "SUBMITTED",
+      "hash": "0xcc1a93f86c27d6b14b17ba6b2661fe2fa05d80742d7c2721201c43ee56a25ffc"
+    }
+  ],
+  "complete": false
+}

@@ -6,6 +6,7 @@ import json
 import typing
 
 MAX_DOC_BYTES = 16000
+MAX_MODEL_OUTPUT = 1000
 MAX_TEXT = 1800
 MAX_PATH = 240
 MAX_REVISIONS = 24
@@ -119,6 +120,10 @@ def _observe(baseline_url: str, baseline_expected: str, candidate_url: str,
     )
     try:
         semantic = gl.nondet.exec_prompt(prompt)
+        if isinstance(semantic, str):
+            if len(semantic) > MAX_MODEL_OUTPUT:
+                return _empty_observation("SOURCE_UNAVAILABLE", baseline_hash, candidate_hash)
+            semantic = json.loads(semantic)
         if not isinstance(semantic, dict) or set(semantic.keys()) != set(FIELDS):
             return _empty_observation("SOURCE_UNAVAILABLE", baseline_hash, candidate_hash)
         result = {"source_status": "VERIFIED", "baseline_sha256": baseline_hash,

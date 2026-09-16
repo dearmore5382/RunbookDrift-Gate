@@ -9,9 +9,9 @@ from genlayer_py.abi import calldata
 from genlayer_py.abi.transactions import serialize
 
 ROOT = Path(__file__).resolve().parents[1]
-ADDRESS = "0x0A1c0bE98F74fe09FDe3B8a3Afd07Ee2cAdD412C"
+ADDRESS = "0x08AAF4102cA7E1b70F214A605E05A3aA38aFC437"
 RPC = "https://studio.genlayer.com/api"
-EXPECTED = "cf30a4d86c4dec3f434958b4c132b40eab51ad49ea4b2d563c3cbf55ea587fe0"
+EXPECTED = "249088bfe702d43ef1dfa776568debfb2580f336a80d874c9377139111defab4"
 SENDER = "0x0000000000000000000000000000000000000001"
 
 

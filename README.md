@@ -30,3 +30,7 @@ Current status: contract implementation and 11 direct/static tests pass, includi
 An initial StudioNet deployment at `0x0A1c0bE98F74fe09FDe3B8a3Afd07Ee2cAdD412C` matched the earlier repository source but exposed an API integration defect: the contract read `response.status_code` while the pinned GenLayer runtime exposes `response.status`. Its assessment safely returned `ASSESSMENT_RETRYABLE` without state mutation. That deployment is superseded and must not be submitted as the production address. The corrected source requires a new deployment before live verification resumes.
 
 See [SPEC.md](SPEC.md), [fixtures/README.md](fixtures/README.md) and [verification/AUDIT.md](verification/AUDIT.md).
+
+Corrected contract source SHA-256: `249088bfe702d43ef1dfa776568debfb2580f336a80d874c9377139111defab4`.
+
+A second deployment at `0x08AAF4102cA7E1b70F214A605E05A3aA38aFC437` proved that validators independently fetched both Raw GitHub files and recomputed the exact committed hashes. It then safely returned `ASSESSMENT_RETRYABLE` because StudioNet supplied the model JSON as a string while that source revision accepted only an already-decoded dictionary. That deployment is also superseded. The current source safely parses bounded JSON strings and still enforces the exact-key schema; its SHA-256 is `141363acdcc907a5b13e5a4ce129e5c0ec6b56967f18e1d0466904df28c02334`.
