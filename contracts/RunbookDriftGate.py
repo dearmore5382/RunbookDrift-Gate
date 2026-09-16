@@ -94,10 +94,9 @@ def _parse_semantic(raw: typing.Any) -> dict:
             raise gl.vm.UserError("SEMANTIC_OUTPUT_TOO_LARGE")
         # Fixed-position tokens avoid JSON/code-fence variability across providers.
         lines = [line.strip() for line in text.splitlines() if line.strip()]
-        candidates = [line for line in lines if len(line.split("|")) == len(FIELDS)]
-        if len(candidates) != 1:
+        if len(lines) != 1 or len(lines[0].split("|")) != len(FIELDS):
             raise gl.vm.UserError("INVALID_SEMANTIC_FORMAT")
-        values = [value.strip().upper() for value in candidates[0].split("|")]
+        values = [value.strip().upper() for value in lines[0].split("|")]
         result = {FIELDS[index]: values[index] for index in range(len(FIELDS))}
     if any(result[field] not in YES_NO_UNCLEAR for field in FIELDS):
         raise gl.vm.UserError("INVALID_SEMANTIC_VALUE")

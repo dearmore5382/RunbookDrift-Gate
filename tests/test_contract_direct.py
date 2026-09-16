@@ -1,5 +1,6 @@
 from pathlib import Path
 import hashlib
+import importlib
 import json
 import sys
 from unittest.mock import patch
@@ -24,11 +25,21 @@ def deploy():
             proxy = contract._instance.open_lineage.__globals__["gl"]
             _ = proxy.nondet
             _ = proxy.vm
+    sdk_root = str(Path(proxy._cached_gl.__file__).resolve().parents[2])
+    if sdk_root not in sys.path:
+        sys.path.insert(0, sdk_root)
+    importlib.import_module("genlayer")
     return vm, contract, curator, outsider
 
 
 def sync(vm, contract):
     proxy = contract._instance.open_lineage.__globals__["gl"]
+    sdk_root = str(Path(proxy._cached_gl.__file__).resolve().parents[2])
+    if sdk_root not in sys.path:
+        sys.path.insert(0, sdk_root)
+    if "genlayer" not in sys.modules:
+        importlib.invalidate_caches()
+        importlib.import_module("genlayer")
     message = proxy.message
     sender = vm.sender
     if isinstance(sender, bytes):
@@ -37,6 +48,22 @@ def sync(vm, contract):
                                                  value=type(message.value)(vm.value))
     proxy._cached_gl.message_raw["sender_address"] = sender
     proxy._cached_gl.message_raw["origin_address"] = sender
+
+
+def restore_validator_modules(contract):
+    proxy = contract._instance.open_lineage.__globals__["gl"]
+    if "genlayer" not in sys.modules:
+        importlib.invalidate_caches()
+        importlib.import_module("genlayer")
+    genlayer_module = sys.modules["genlayer"]
+    genlayer_module.gl = proxy._cached_gl
+    sys.modules["genlayer.gl"] = proxy._cached_gl
+    sys.modules["genlayer.gl.vm"] = proxy._cached_gl.vm
+
+
+def remove_validator_modules():
+    sys.modules.pop("genlayer.gl.vm", None)
+    sys.modules.pop("genlayer.gl", None)
 
 
 def open_lineage(vm, contract):
@@ -196,6 +223,109 @@ def test_observer_rejects_extra_semantic_token():
         result = globals_["_observe"]("base", hashlib.sha256(content).hexdigest(), "candidate",
                                       hashlib.sha256(content).hexdigest(), POLICY)
     assert result["source_status"] == "SOURCE_UNAVAILABLE"
+
+
+def test_observer_rejects_prose_wrapped_semantic_line():
+    vm, contract, _, _ = deploy()
+    globals_ = contract._instance.open_lineage.__globals__
+    content = b"document"
+    proxy = globals_["gl"]
+    with vm.activate(), patch.dict(globals_, {"_fetch": lambda _url: content}), \
+            patch.object(proxy.nondet, "exec_prompt", return_value="Assessment:\nYES|YES|YES|NO|NO"):
+        result = globals_["_observe"]("base", hashlib.sha256(content).hexdigest(), "candidate",
+                                      hashlib.sha256(content).hexdigest(), POLICY)
+    assert result["source_status"] == "SOURCE_UNAVAILABLE"
+
+
+def test_full_public_happy_path_fetches_hashes_revalidates_and_promotes():
+    vm, contract, _, _ = deploy()
+    baseline = b"Stop on error. Roll back the release. Verify health. Escalate to incident command.\n"
+    candidate = b"Stop on error. Restore the prior release. Confirm health. Escalate to incident command.\n"
+    baseline_digest = hashlib.sha256(baseline).hexdigest()
+    candidate_digest = hashlib.sha256(candidate).hexdigest()
+    baseline_commit = "a" * 40
+    candidate_commit = "b" * 40
+    baseline_url = ("https://raw.githubusercontent.com/example-org/operations/" + baseline_commit +
+                    "/runbooks/payments.md")
+    candidate_url = ("https://raw.githubusercontent.com/example-org/operations/" + candidate_commit +
+                     "/runbooks/payments-v2.md")
+    vm.clear_mocks()
+    vm.mock_web(baseline_url, {"status": 200, "body": baseline})
+    vm.mock_web(candidate_url, {"status": 200, "body": candidate})
+    vm.mock_llm(r"(?s).*pipe-delimited line.*Evidence:.*", "YES|YES|YES|NO|YES")
+    with vm.activate():
+        sync(vm, contract)
+        lineage = contract.open_lineage("Payments API recovery", "example-org", "operations",
+                                        baseline_commit, "runbooks/payments.md", baseline_digest, POLICY)
+        revision = contract.propose_revision(lineage, candidate_commit, "runbooks/payments-v2.md",
+                                             candidate_digest)
+        assert contract.assess_revision(revision) == "SAFE_REVISION"
+        receipt = json.loads(contract.get_revision(revision))
+        observed = json.loads(receipt["observation"])
+        assert observed["baseline_sha256"] == baseline_digest
+        assert observed["candidate_sha256"] == candidate_digest
+        assert receipt["status"] == "ASSESSED"
+        restore_validator_modules(contract)
+        assert vm.run_validator() is True
+        assert contract.promote_revision(revision) == "BASELINE_PROMOTED"
+        lineage_state = json.loads(contract.get_lineage(lineage))
+        assert lineage_state["generation"] == 1
+        assert lineage_state["baseline_commit"] == candidate_commit
+        assert lineage_state["baseline_sha256"] == candidate_digest
+    remove_validator_modules()
+
+
+def test_full_public_failure_path_blocks_digest_substitution_before_llm():
+    vm, contract, _, _ = deploy()
+    baseline = b"authenticated baseline\n"
+    candidate = b"substituted candidate bytes\n"
+    commit_a, commit_b = "a" * 40, "b" * 40
+    url_a = "https://raw.githubusercontent.com/example-org/operations/" + commit_a + "/baseline.md"
+    url_b = "https://raw.githubusercontent.com/example-org/operations/" + commit_b + "/candidate.md"
+    vm.clear_mocks()
+    vm.mock_web(url_a, {"status": 200, "body": baseline})
+    vm.mock_web(url_b, {"status": 200, "body": candidate})
+    vm.mock_llm(r".*", "YES|YES|YES|NO|NO")
+    with vm.activate():
+        sync(vm, contract)
+        lineage = contract.open_lineage("Digest guard", "example-org", "operations", commit_a,
+                                        "baseline.md", hashlib.sha256(baseline).hexdigest(), POLICY)
+        revision = contract.propose_revision(lineage, commit_b, "candidate.md", "0" * 64)
+        assert contract.assess_revision(revision) == "INTEGRITY_FAILURE"
+        receipt = json.loads(contract.get_revision(revision))
+        observed = json.loads(receipt["observation"])
+        assert observed["candidate_sha256"] == hashlib.sha256(candidate).hexdigest()
+        assert receipt["verdict"] == "INTEGRITY_FAILURE"
+        assert contract.promote_revision(revision) == "REVISION_NOT_PROMOTABLE"
+
+
+def test_validator_rejects_consequential_model_disagreement():
+    vm, contract, _, _ = deploy()
+    baseline = b"Roll back, verify health, and escalate.\n"
+    candidate = b"Restore, verify health, and escalate.\n"
+    commit_a, commit_b = "a" * 40, "b" * 40
+    url_a = "https://raw.githubusercontent.com/example-org/operations/" + commit_a + "/baseline.md"
+    url_b = "https://raw.githubusercontent.com/example-org/operations/" + commit_b + "/candidate.md"
+    vm.clear_mocks()
+    vm.mock_web(url_a, {"status": 200, "body": baseline})
+    vm.mock_web(url_b, {"status": 200, "body": candidate})
+    vm.mock_llm(r".*", "YES|YES|YES|NO|NO")
+    with vm.activate():
+        sync(vm, contract)
+        lineage = contract.open_lineage("Consensus guard", "example-org", "operations", commit_a,
+                                        "baseline.md", hashlib.sha256(baseline).hexdigest(), POLICY)
+        revision = contract.propose_revision(lineage, commit_b, "candidate.md",
+                                             hashlib.sha256(candidate).hexdigest())
+        assert contract.assess_revision(revision) == "SAFE_REVISION"
+    vm.clear_mocks()
+    vm.mock_web(url_a, {"status": 200, "body": baseline})
+    vm.mock_web(url_b, {"status": 200, "body": candidate})
+    vm.mock_llm(r".*", "NO|YES|YES|NO|YES")
+    with vm.activate():
+        sync(vm, contract)
+        restore_validator_modules(contract)
+        assert vm.run_validator() is False
+    remove_validator_modules()
 
 
 def test_digest_mismatch_blocks_semantic_prompt():
