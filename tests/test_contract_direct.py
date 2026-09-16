@@ -173,32 +173,26 @@ def test_observer_hashes_exact_fetched_bytes_before_llm():
     assert result["candidate_sha256"] == expected_b
 
 
-def test_observer_accepts_studionet_json_string_with_exact_schema():
+def test_observer_accepts_fixed_position_semantic_tokens():
     vm, contract, _, _ = deploy()
     globals_ = contract._instance.open_lineage.__globals__
     baseline, candidate = b"baseline", b"candidate"
-    semantic = {"rollback_preserved": "YES", "verification_preserved": "YES",
-                "escalation_preserved": "YES", "dangerous_scope_expanded": "NO",
-                "operational_meaning_changed": "NO"}
     proxy = globals_["gl"]
     with vm.activate(), patch.dict(globals_, {"_fetch": lambda url: baseline if url == "base" else candidate}), \
-            patch.object(proxy.nondet, "exec_prompt", return_value=json.dumps(semantic)):
+            patch.object(proxy.nondet, "exec_prompt", return_value="YES|YES|YES|NO|NO"):
         result = globals_["_observe"]("base", hashlib.sha256(baseline).hexdigest(), "candidate",
                                       hashlib.sha256(candidate).hexdigest(), POLICY)
     assert result["source_status"] == "VERIFIED"
     assert result["rollback_preserved"] == "YES"
 
 
-def test_observer_rejects_string_json_with_extra_key():
+def test_observer_rejects_extra_semantic_token():
     vm, contract, _, _ = deploy()
     globals_ = contract._instance.open_lineage.__globals__
     content = b"document"
-    semantic = {"rollback_preserved": "YES", "verification_preserved": "YES",
-                "escalation_preserved": "YES", "dangerous_scope_expanded": "NO",
-                "operational_meaning_changed": "NO", "verdict": "SAFE_REVISION"}
     proxy = globals_["gl"]
     with vm.activate(), patch.dict(globals_, {"_fetch": lambda _url: content}), \
-            patch.object(proxy.nondet, "exec_prompt", return_value=json.dumps(semantic)):
+            patch.object(proxy.nondet, "exec_prompt", return_value="YES|YES|YES|NO|NO|SAFE_REVISION"):
         result = globals_["_observe"]("base", hashlib.sha256(content).hexdigest(), "candidate",
                                       hashlib.sha256(content).hexdigest(), POLICY)
     assert result["source_status"] == "SOURCE_UNAVAILABLE"
