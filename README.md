@@ -36,3 +36,12 @@ Corrected contract source SHA-256: `249088bfe702d43ef1dfa776568debfb2580f336a80d
 A second deployment at `0x08AAF4102cA7E1b70F214A605E05A3aA38aFC437` proved that validators independently fetched both Raw GitHub files and recomputed the exact committed hashes. It then safely returned `ASSESSMENT_RETRYABLE` because StudioNet supplied the model JSON as a string while that source revision accepted only an already-decoded dictionary. That deployment is also superseded. The current source safely parses bounded JSON strings and still enforces the exact-key schema; its SHA-256 is `141363acdcc907a5b13e5a4ce129e5c0ec6b56967f18e1d0466904df28c02334`.
 
 A third deployment at `0xf902855724f6a9Fe63D77A672C53180921b320d0` again proved exact Raw GitHub hashes and active LLM execution, but heterogeneous model formatting still did not satisfy the JSON boundary. It safely returned retryable without state mutation. The current source replaces JSON output with an exact five-position token protocol (`YES|YES|YES|NO|NO`), rejects extra tokens, invalid values, code fences and prose-wrapped answers, and preserves the same structured on-chain fields. A direct full-path test now exercises public assessment, both web fetches, exact digest recomputation, leader/validator agreement, observation persistence and promotion. Current source SHA-256: `86c21e9c17e1033fa2b927a23fdccfcc48908269b83dc402191ff962dacbea19`.
+
+## Verified StudioNet deployment
+
+- Contract: [`0x3021150FEf7AD2aaD6394805BB0D2cDc20853e13`](https://explorer-studio.genlayer.com/address/0x3021150FEf7AD2aaD6394805BB0D2cDc20853e13)
+- Exact deployed/local source SHA-256: `86c21e9c17e1033fa2b927a23fdccfcc48908269b83dc402191ff962dacbea19`
+- Live evidence: [`verification/live-0x3021150fef7ad2aad6394805bb0d2cdc20853e13.json`](verification/live-0x3021150fef7ad2aad6394805bb0d2cdc20853e13.json)
+- Preflight parity evidence: [`verification/preflight-0x3021150fef7ad2aad6394805bb0d2cdc20853e13.json`](verification/preflight-0x3021150fef7ad2aad6394805bb0d2cdc20853e13.json)
+
+The checkpointed live audit completed all 18 transactions. Validators produced `SAFE_REVISION` for the authenticated safe fixture and the curator promoted it; a rollback-removing candidate produced `SAFETY_REGRESSION` and could not be promoted; a candidate with substituted digest produced `INTEGRITY_FAILURE` and could not be promoted. Authority, pending-state, replay and dismissal guards also passed. Every evidence item includes its Studio Explorer transaction URL.

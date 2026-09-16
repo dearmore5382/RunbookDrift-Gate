@@ -1,0 +1,165 @@
+{
+  "network": "StudioNet",
+  "chain_id": 61999,
+  "contract": "0x3021150FEf7AD2aaD6394805BB0D2cDc20853e13",
+  "explorer": "https://explorer-studio.genlayer.com/address/0x3021150FEf7AD2aaD6394805BB0D2cDc20853e13",
+  "source_sha256": "86c21e9c17e1033fa2b927a23fdccfcc48908269b83dc402191ff962dacbea19",
+  "expected_source_sha256": "86c21e9c17e1033fa2b927a23fdccfcc48908269b83dc402191ff962dacbea19",
+  "exact_source_parity": true,
+  "initial_counts": "0|0",
+  "public_methods": [
+    "assess_revision",
+    "cancel_pending",
+    "dismiss_revision",
+    "get_counts",
+    "get_lineage",
+    "get_revision",
+    "open_lineage",
+    "promote_revision",
+    "propose_revision"
+  ],
+  "schema": {
+    "ctor": {
+      "params": [],
+      "kwparams": {}
+    },
+    "methods": {
+      "assess_revision": {
+        "params": [
+          [
+            "revision_id",
+            "int"
+          ]
+        ],
+        "kwparams": {},
+        "readonly": false,
+        "ret": "string",
+        "payable": false
+      },
+      "cancel_pending": {
+        "params": [
+          [
+            "revision_id",
+            "int"
+          ]
+        ],
+        "kwparams": {},
+        "readonly": false,
+        "ret": "string",
+        "payable": false
+      },
+      "dismiss_revision": {
+        "params": [
+          [
+            "revision_id",
+            "int"
+          ]
+        ],
+        "kwparams": {},
+        "readonly": false,
+        "ret": "string",
+        "payable": false
+      },
+      "get_counts": {
+        "params": [],
+        "kwparams": {},
+        "readonly": true,
+        "ret": "string"
+      },
+      "get_lineage": {
+        "params": [
+          [
+            "lineage_id",
+            "int"
+          ]
+        ],
+        "kwparams": {},
+        "readonly": true,
+        "ret": "string"
+      },
+      "get_revision": {
+        "params": [
+          [
+            "revision_id",
+            "int"
+          ]
+        ],
+        "kwparams": {},
+        "readonly": true,
+        "ret": "string"
+      },
+      "open_lineage": {
+        "params": [
+          [
+            "name",
+            "string"
+          ],
+          [
+            "owner",
+            "string"
+          ],
+          [
+            "repository",
+            "string"
+          ],
+          [
+            "baseline_commit",
+            "string"
+          ],
+          [
+            "baseline_path",
+            "string"
+          ],
+          [
+            "baseline_sha256",
+            "string"
+          ],
+          [
+            "safety_policy",
+            "string"
+          ]
+        ],
+        "kwparams": {},
+        "readonly": false,
+        "ret": "any",
+        "payable": false
+      },
+      "promote_revision": {
+        "params": [
+          [
+            "revision_id",
+            "int"
+          ]
+        ],
+        "kwparams": {},
+        "readonly": false,
+        "ret": "string",
+        "payable": false
+      },
+      "propose_revision": {
+        "params": [
+          [
+            "lineage_id",
+            "int"
+          ],
+          [
+            "commit",
+            "string"
+          ],
+          [
+            "path",
+            "string"
+          ],
+          [
+            "sha256",
+            "string"
+          ]
+        ],
+        "kwparams": {},
+        "readonly": false,
+        "ret": "any",
+        "payable": false
+      }
+    }
+  }
+}

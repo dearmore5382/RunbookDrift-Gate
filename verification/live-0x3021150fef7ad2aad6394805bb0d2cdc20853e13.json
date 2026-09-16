@@ -1,0 +1,437 @@
+{
+  "contract": "0x3021150FEf7AD2aaD6394805BB0D2cDc20853e13",
+  "source_sha256": "86c21e9c17e1033fa2b927a23fdccfcc48908269b83dc402191ff962dacbea19",
+  "fixture_commit": "53c6627541a052413f0bf7c1241603b97fec4ba9",
+  "started_at": "2026-09-16T03:27:35.234888+00:00",
+  "wallets": [
+    "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+    "0xA63DE24e30C88FB1019E8956654730316e36eDBE"
+  ],
+  "steps": [
+    {
+      "id": "F1-invalid-commit",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "open_lineage",
+      "args": [
+        "Invalid",
+        "dearmore5382",
+        "RunbookDrift-Gate",
+        "main",
+        "fixtures/baseline-runbook.md",
+        "1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b",
+        "Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets."
+      ],
+      "allowed": [
+        "INVALID_BASELINE_LOCATOR"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x7b838839149d9303d35d5ae069c479b6b8cf65a08f50f64581330b8029d10448",
+      "actual": "INVALID_BASELINE_LOCATOR",
+      "readback": {
+        "counts": "0|0"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x7b838839149d9303d35d5ae069c479b6b8cf65a08f50f64581330b8029d10448"
+    },
+    {
+      "id": "H1-open-safe-lineage",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "open_lineage",
+      "args": [
+        "Safe wording revision",
+        "dearmore5382",
+        "RunbookDrift-Gate",
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/baseline-runbook.md",
+        "1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b",
+        "Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets."
+      ],
+      "allowed": [
+        "0"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x22cc38d130e0a9a585c6fe8185a6c68e358a45accb35f3c412f7a33d2da261d5",
+      "actual": "0",
+      "readback": {
+        "counts": "1|0",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x22cc38d130e0a9a585c6fe8185a6c68e358a45accb35f3c412f7a33d2da261d5"
+    },
+    {
+      "id": "F2-outsider-propose",
+      "actor": "0xA63DE24e30C88FB1019E8956654730316e36eDBE",
+      "method": "propose_revision",
+      "args": [
+        0,
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/safe-revision.md",
+        "790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106"
+      ],
+      "allowed": [
+        "CURATOR_ONLY"
+      ],
+      "status": "VERIFIED",
+      "hash": "0xc1e2cd47cb79052724b2b6ac99b1c48428e33d4562657990ab3a95b35e4c8e9e",
+      "actual": "CURATOR_ONLY",
+      "readback": {
+        "counts": "1|0",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0xc1e2cd47cb79052724b2b6ac99b1c48428e33d4562657990ab3a95b35e4c8e9e"
+    },
+    {
+      "id": "H2-propose-safe",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "propose_revision",
+      "args": [
+        0,
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/safe-revision.md",
+        "790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106"
+      ],
+      "allowed": [
+        "0"
+      ],
+      "status": "VERIFIED",
+      "hash": "0xa1e4b068c4000c96a311f52a7b958d02c190ef7b2c25966c10d6e12b910a7544",
+      "actual": "0",
+      "readback": {
+        "counts": "1|1",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 1, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PENDING\", \"verdict\": \"UNEVALUATED\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0xa1e4b068c4000c96a311f52a7b958d02c190ef7b2c25966c10d6e12b910a7544"
+    },
+    {
+      "id": "F3-second-pending",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "propose_revision",
+      "args": [
+        0,
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/missing-rollback.md",
+        "6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072"
+      ],
+      "allowed": [
+        "REVISION_NOT_PROPOSABLE"
+      ],
+      "status": "VERIFIED",
+      "hash": "0xeb037432117336659079d90999d87f6f9f2ba8b32c8ecee7154a1767eed16f79",
+      "actual": "REVISION_NOT_PROPOSABLE",
+      "readback": {
+        "counts": "1|1",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 1, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PENDING\", \"verdict\": \"UNEVALUATED\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0xeb037432117336659079d90999d87f6f9f2ba8b32c8ecee7154a1767eed16f79"
+    },
+    {
+      "id": "H3-assess-safe",
+      "actor": "0xA63DE24e30C88FB1019E8956654730316e36eDBE",
+      "method": "assess_revision",
+      "args": [
+        0
+      ],
+      "allowed": [
+        "SAFE_REVISION"
+      ],
+      "status": "VERIFIED",
+      "hash": "0xdfa4f7daf40acd825905fcfb19fb3c01c43b32555afafe9457cdbc6037fe7b57",
+      "actual": "SAFE_REVISION",
+      "readback": {
+        "counts": "1|1",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 1, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"ASSESSED\", \"verdict\": \"SAFE_REVISION\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0xdfa4f7daf40acd825905fcfb19fb3c01c43b32555afafe9457cdbc6037fe7b57"
+    },
+    {
+      "id": "H4-promote-safe",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "promote_revision",
+      "args": [
+        0
+      ],
+      "allowed": [
+        "BASELINE_PROMOTED"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x2a5b605a15f179baaadfc524bdda54434ca66e0bc182d4deb69d66712b58a12e",
+      "actual": "BASELINE_PROMOTED",
+      "readback": {
+        "counts": "1|1",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x2a5b605a15f179baaadfc524bdda54434ca66e0bc182d4deb69d66712b58a12e"
+    },
+    {
+      "id": "F4-promote-replay",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "promote_revision",
+      "args": [
+        0
+      ],
+      "allowed": [
+        "REVISION_NOT_PROMOTABLE"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x1b6971f77b6c59a1ebf2fd9ac7ef449aedc5f8b29cde592173edbc946ac73564",
+      "actual": "REVISION_NOT_PROMOTABLE",
+      "readback": {
+        "counts": "1|1",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x1b6971f77b6c59a1ebf2fd9ac7ef449aedc5f8b29cde592173edbc946ac73564"
+    },
+    {
+      "id": "H5-open-unsafe-lineage",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "open_lineage",
+      "args": [
+        "Rollback removal control",
+        "dearmore5382",
+        "RunbookDrift-Gate",
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/baseline-runbook.md",
+        "1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b",
+        "Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets."
+      ],
+      "allowed": [
+        "1"
+      ],
+      "status": "VERIFIED",
+      "hash": "0xdfa6de7a8c65e08397a484d1f2245521f4f09cffa3df4574d401c38d6b142d93",
+      "actual": "1",
+      "readback": {
+        "counts": "2|1",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0xdfa6de7a8c65e08397a484d1f2245521f4f09cffa3df4574d401c38d6b142d93"
+    },
+    {
+      "id": "H6-propose-unsafe",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "propose_revision",
+      "args": [
+        1,
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/missing-rollback.md",
+        "6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072"
+      ],
+      "allowed": [
+        "1"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x2deb412fce4e4b697ac2da67b513dc98a6a3a33aeecb02593b02a27a9d19fa29",
+      "actual": "1",
+      "readback": {
+        "counts": "2|2",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 2, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}",
+        "revision1": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 1, \"observation\": \"\", \"path\": \"fixtures/missing-rollback.md\", \"sha256\": \"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\", \"status\": \"PENDING\", \"verdict\": \"UNEVALUATED\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x2deb412fce4e4b697ac2da67b513dc98a6a3a33aeecb02593b02a27a9d19fa29"
+    },
+    {
+      "id": "H7-assess-unsafe",
+      "actor": "0xA63DE24e30C88FB1019E8956654730316e36eDBE",
+      "method": "assess_revision",
+      "args": [
+        1
+      ],
+      "allowed": [
+        "SAFETY_REGRESSION"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x01fecaac8b13dc28ea2caed432d311a87476e9050e7dd98ddb62bb979b8d79f6",
+      "actual": "SAFETY_REGRESSION",
+      "readback": {
+        "counts": "2|2",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 2, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}",
+        "revision1": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 1, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"YES\\\",\\\"rollback_preserved\\\":\\\"NO\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"NO\\\"}\", \"path\": \"fixtures/missing-rollback.md\", \"sha256\": \"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\", \"status\": \"ASSESSED\", \"verdict\": \"SAFETY_REGRESSION\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x01fecaac8b13dc28ea2caed432d311a87476e9050e7dd98ddb62bb979b8d79f6"
+    },
+    {
+      "id": "F5-promote-unsafe",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "promote_revision",
+      "args": [
+        1
+      ],
+      "allowed": [
+        "REVISION_NOT_PROMOTABLE"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x54eaf606e5e434c266ffbf2ef09623fbc563db2cd6c33d3bd45783729d683274",
+      "actual": "REVISION_NOT_PROMOTABLE",
+      "readback": {
+        "counts": "2|2",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 2, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}",
+        "revision1": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 1, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"YES\\\",\\\"rollback_preserved\\\":\\\"NO\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"NO\\\"}\", \"path\": \"fixtures/missing-rollback.md\", \"sha256\": \"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\", \"status\": \"ASSESSED\", \"verdict\": \"SAFETY_REGRESSION\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x54eaf606e5e434c266ffbf2ef09623fbc563db2cd6c33d3bd45783729d683274"
+    },
+    {
+      "id": "H8-dismiss-unsafe",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "dismiss_revision",
+      "args": [
+        1
+      ],
+      "allowed": [
+        "REVISION_DISMISSED"
+      ],
+      "status": "VERIFIED",
+      "hash": "0xb02924c1e44005261f220fa953eba3f4242ff5e7e0ac0b544c2234b6f9d47243",
+      "actual": "REVISION_DISMISSED",
+      "readback": {
+        "counts": "2|2",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}",
+        "revision1": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 1, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"YES\\\",\\\"rollback_preserved\\\":\\\"NO\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"NO\\\"}\", \"path\": \"fixtures/missing-rollback.md\", \"sha256\": \"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\", \"status\": \"DISMISSED\", \"verdict\": \"SAFETY_REGRESSION\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0xb02924c1e44005261f220fa953eba3f4242ff5e7e0ac0b544c2234b6f9d47243"
+    },
+    {
+      "id": "H9-open-integrity-lineage",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "open_lineage",
+      "args": [
+        "Digest mismatch control",
+        "dearmore5382",
+        "RunbookDrift-Gate",
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/baseline-runbook.md",
+        "1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b",
+        "Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets."
+      ],
+      "allowed": [
+        "2"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x8f5e41bfacb31b55b157515cfc7e6947f16d4c247520c5c53310e6f044ca5785",
+      "actual": "2",
+      "readback": {
+        "counts": "3|2",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage2": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Digest mismatch control\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}",
+        "revision1": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 1, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"YES\\\",\\\"rollback_preserved\\\":\\\"NO\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"NO\\\"}\", \"path\": \"fixtures/missing-rollback.md\", \"sha256\": \"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\", \"status\": \"DISMISSED\", \"verdict\": \"SAFETY_REGRESSION\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x8f5e41bfacb31b55b157515cfc7e6947f16d4c247520c5c53310e6f044ca5785"
+    },
+    {
+      "id": "H10-propose-wrong-digest",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "propose_revision",
+      "args": [
+        2,
+        "53c6627541a052413f0bf7c1241603b97fec4ba9",
+        "fixtures/safe-revision.md",
+        "0000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "allowed": [
+        "2"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x47e80d9dac338035b03d6c8de653833ba43cf5f00a70bb587da4feb12e12db7c",
+      "actual": "2",
+      "readback": {
+        "counts": "3|3",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage2": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Digest mismatch control\", \"pending_revision_plus_one\": 3, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}",
+        "revision1": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 1, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"YES\\\",\\\"rollback_preserved\\\":\\\"NO\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"NO\\\"}\", \"path\": \"fixtures/missing-rollback.md\", \"sha256\": \"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\", \"status\": \"DISMISSED\", \"verdict\": \"SAFETY_REGRESSION\"}",
+        "revision2": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 2, \"observation\": \"\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \"status\": \"PENDING\", \"verdict\": \"UNEVALUATED\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x47e80d9dac338035b03d6c8de653833ba43cf5f00a70bb587da4feb12e12db7c"
+    },
+    {
+      "id": "H11-assess-integrity",
+      "actor": "0xA63DE24e30C88FB1019E8956654730316e36eDBE",
+      "method": "assess_revision",
+      "args": [
+        2
+      ],
+      "allowed": [
+        "INTEGRITY_FAILURE"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x0e633380de3958616d06074d0d3c115797fcbf5a9e378ea0206a2696dcef7e94",
+      "actual": "INTEGRITY_FAILURE",
+      "readback": {
+        "counts": "3|3",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage2": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Digest mismatch control\", \"pending_revision_plus_one\": 3, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}",
+        "revision1": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 1, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"YES\\\",\\\"rollback_preserved\\\":\\\"NO\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"NO\\\"}\", \"path\": \"fixtures/missing-rollback.md\", \"sha256\": \"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\", \"status\": \"DISMISSED\", \"verdict\": \"SAFETY_REGRESSION\"}",
+        "revision2": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 2, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"UNCLEAR\\\",\\\"escalation_preserved\\\":\\\"UNCLEAR\\\",\\\"operational_meaning_changed\\\":\\\"UNCLEAR\\\",\\\"rollback_preserved\\\":\\\"UNCLEAR\\\",\\\"source_status\\\":\\\"INTEGRITY_FAILURE\\\",\\\"verification_preserved\\\":\\\"UNCLEAR\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \"status\": \"ASSESSED\", \"verdict\": \"INTEGRITY_FAILURE\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x0e633380de3958616d06074d0d3c115797fcbf5a9e378ea0206a2696dcef7e94"
+    },
+    {
+      "id": "F6-promote-integrity",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "promote_revision",
+      "args": [
+        2
+      ],
+      "allowed": [
+        "REVISION_NOT_PROMOTABLE"
+      ],
+      "status": "VERIFIED",
+      "hash": "0xde8423dc411fe8de227a6af1710d470decc5920b0c2135330e5c7d887f31fa9c",
+      "actual": "REVISION_NOT_PROMOTABLE",
+      "readback": {
+        "counts": "3|3",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage2": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Digest mismatch control\", \"pending_revision_plus_one\": 3, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}",
+        "revision1": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 1, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"YES\\\",\\\"rollback_preserved\\\":\\\"NO\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"NO\\\"}\", \"path\": \"fixtures/missing-rollback.md\", \"sha256\": \"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\", \"status\": \"DISMISSED\", \"verdict\": \"SAFETY_REGRESSION\"}",
+        "revision2": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 2, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"UNCLEAR\\\",\\\"escalation_preserved\\\":\\\"UNCLEAR\\\",\\\"operational_meaning_changed\\\":\\\"UNCLEAR\\\",\\\"rollback_preserved\\\":\\\"UNCLEAR\\\",\\\"source_status\\\":\\\"INTEGRITY_FAILURE\\\",\\\"verification_preserved\\\":\\\"UNCLEAR\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \"status\": \"ASSESSED\", \"verdict\": \"INTEGRITY_FAILURE\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0xde8423dc411fe8de227a6af1710d470decc5920b0c2135330e5c7d887f31fa9c"
+    },
+    {
+      "id": "H12-dismiss-integrity",
+      "actor": "0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB",
+      "method": "dismiss_revision",
+      "args": [
+        2
+      ],
+      "allowed": [
+        "REVISION_DISMISSED"
+      ],
+      "status": "VERIFIED",
+      "hash": "0x6244ff1edf26e92208b51ad4502c47e470c06e47d19b5a6531c2c421adb9b701",
+      "actual": "REVISION_DISMISSED",
+      "readback": {
+        "counts": "3|3",
+        "lineage0": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/safe-revision.md\", \"baseline_sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 1, \"name\": \"Safe wording revision\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage1": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Rollback removal control\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "lineage2": "{\"baseline_commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"baseline_path\": \"fixtures/baseline-runbook.md\", \"baseline_sha256\": \"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\", \"curator\": \"0x736A168247e3f0C52F7907c9a8fDac572DF9c8bB\", \"generation\": 0, \"name\": \"Digest mismatch control\", \"pending_revision_plus_one\": 0, \"policy\": \"Preserve rollback, post-action verification and incident escalation; do not broaden hazardous targets.\", \"repository\": \"dearmore5382/RunbookDrift-Gate\", \"status\": \"OPEN\"}",
+        "revision0": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 0, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"NO\\\",\\\"rollback_preserved\\\":\\\"YES\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"YES\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\", \"status\": \"PROMOTED\", \"verdict\": \"SAFE_REVISION\"}",
+        "revision1": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 1, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\\\",\\\"dangerous_scope_expanded\\\":\\\"NO\\\",\\\"escalation_preserved\\\":\\\"YES\\\",\\\"operational_meaning_changed\\\":\\\"YES\\\",\\\"rollback_preserved\\\":\\\"NO\\\",\\\"source_status\\\":\\\"VERIFIED\\\",\\\"verification_preserved\\\":\\\"NO\\\"}\", \"path\": \"fixtures/missing-rollback.md\", \"sha256\": \"6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072\", \"status\": \"DISMISSED\", \"verdict\": \"SAFETY_REGRESSION\"}",
+        "revision2": "{\"commit\": \"53c6627541a052413f0bf7c1241603b97fec4ba9\", \"generation\": 0, \"lineage_id\": 2, \"observation\": \"{\\\"baseline_sha256\\\":\\\"1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b\\\",\\\"candidate_sha256\\\":\\\"790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106\\\",\\\"dangerous_scope_expanded\\\":\\\"UNCLEAR\\\",\\\"escalation_preserved\\\":\\\"UNCLEAR\\\",\\\"operational_meaning_changed\\\":\\\"UNCLEAR\\\",\\\"rollback_preserved\\\":\\\"UNCLEAR\\\",\\\"source_status\\\":\\\"INTEGRITY_FAILURE\\\",\\\"verification_preserved\\\":\\\"UNCLEAR\\\"}\", \"path\": \"fixtures/safe-revision.md\", \"sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \"status\": \"DISMISSED\", \"verdict\": \"INTEGRITY_FAILURE\"}"
+      },
+      "explorer": "https://explorer-studio.genlayer.com/tx/0x6244ff1edf26e92208b51ad4502c47e470c06e47d19b5a6531c2c421adb9b701"
+    }
+  ],
+  "complete": true,
+  "completed_at": "2026-09-16T03:44:05.860452+00:00"
+}
