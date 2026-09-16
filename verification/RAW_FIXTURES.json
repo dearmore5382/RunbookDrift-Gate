@@ -1,0 +1,27 @@
+{
+  "repository": "dearmore5382/RunbookDrift-Gate",
+  "fixture_commit": "53c6627541a052413f0bf7c1241603b97fec4ba9",
+  "verified_from_public_raw_bytes": true,
+  "files": {
+    "baseline-runbook.md": {
+      "url": "https://raw.githubusercontent.com/dearmore5382/RunbookDrift-Gate/53c6627541a052413f0bf7c1241603b97fec4ba9/fixtures/baseline-runbook.md",
+      "sha256": "1d91d09725536e5e8bf5fead2d1f600b5edff537e38dfe00a5adbb72b1174b3b"
+    },
+    "safe-revision.md": {
+      "url": "https://raw.githubusercontent.com/dearmore5382/RunbookDrift-Gate/53c6627541a052413f0bf7c1241603b97fec4ba9/fixtures/safe-revision.md",
+      "sha256": "790b0f0c9cad9e541a3b77b4672ef5c1b03701f7771b710d7409956c05166106"
+    },
+    "missing-rollback.md": {
+      "url": "https://raw.githubusercontent.com/dearmore5382/RunbookDrift-Gate/53c6627541a052413f0bf7c1241603b97fec4ba9/fixtures/missing-rollback.md",
+      "sha256": "6577ac41831eb71b519199af69c0af7c4304612a4ea3c58daf3bf25cda3c8072"
+    },
+    "expanded-scope.md": {
+      "url": "https://raw.githubusercontent.com/dearmore5382/RunbookDrift-Gate/53c6627541a052413f0bf7c1241603b97fec4ba9/fixtures/expanded-scope.md",
+      "sha256": "c454cf3ba18ea5feac42daee8f2aff2a6c5bf247704a0d0b8b5bdd12e1aaba49"
+    },
+    "prompt-injection.md": {
+      "url": "https://raw.githubusercontent.com/dearmore5382/RunbookDrift-Gate/53c6627541a052413f0bf7c1241603b97fec4ba9/fixtures/prompt-injection.md",
+      "sha256": "c79b70a356a60170b0fb337cbc7c858e7037117ab8a3195f8500572858d71710"
+    }
+  }
+}
