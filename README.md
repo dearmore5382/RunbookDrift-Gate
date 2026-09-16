@@ -42,6 +42,7 @@ A third deployment at `0xf902855724f6a9Fe63D77A672C53180921b320d0` again proved 
 - Contract: [`0x3021150FEf7AD2aaD6394805BB0D2cDc20853e13`](https://explorer-studio.genlayer.com/address/0x3021150FEf7AD2aaD6394805BB0D2cDc20853e13)
 - Exact deployed/local source SHA-256: `86c21e9c17e1033fa2b927a23fdccfcc48908269b83dc402191ff962dacbea19`
 - Live evidence: [`verification/live-0x3021150fef7ad2aad6394805bb0d2cdc20853e13.json`](verification/live-0x3021150fef7ad2aad6394805bb0d2cdc20853e13.json)
+- Human-readable live results: [`verification/LIVE_RESULTS.md`](verification/LIVE_RESULTS.md)
 - Preflight parity evidence: [`verification/preflight-0x3021150fef7ad2aad6394805bb0d2cdc20853e13.json`](verification/preflight-0x3021150fef7ad2aad6394805bb0d2cdc20853e13.json)
 
 The checkpointed live audit completed all 18 transactions. Validators produced `SAFE_REVISION` for the authenticated safe fixture and the curator promoted it; a rollback-removing candidate produced `SAFETY_REGRESSION` and could not be promoted; a candidate with substituted digest produced `INTEGRITY_FAILURE` and could not be promoted. Authority, pending-state, replay and dismissal guards also passed. Every evidence item includes its Studio Explorer transaction URL.
